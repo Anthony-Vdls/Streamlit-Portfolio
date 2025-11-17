@@ -5,12 +5,12 @@ import streamlit as st
 st.title("About me")
  
 NAME = "Anthony Vidales"
-PROGRAM = "Computer Scientiest"
+PROGRAM = "Computer Scientist"
 INTRO = (
-    "I am a computer science, math, and philosophy enthusiast. "
-    "I enjoy these topics becuase the formal sciences applies to many real word scenarios. "
-    ""
+    "I'm learning my way through computer science, mathematics, and philosophy, "
+    "with a focus on how formal ideas can actually help in real-world situations."
 )
+
 PHIL = "If the visualizations "
 
 SKILLS = [
