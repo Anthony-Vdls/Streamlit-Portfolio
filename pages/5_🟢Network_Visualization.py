@@ -3,8 +3,13 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 # Page Config ###########################################
+st.set_page_config(
+    page_title="Graph Vizualization",
+    page_icon="🟢",
+    layout="wide",
+)
 
-
+st.title("Graph Vizualization Example")
 
 
 # Data ##################################################
