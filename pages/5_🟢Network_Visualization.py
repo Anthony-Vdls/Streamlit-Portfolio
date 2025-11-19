@@ -37,4 +37,5 @@ g = nx.Graph()
 g.add_edges_from(data)
 pos = nx.spring_layout(g)  # Force-directed layout
 nx.draw(g, pos, with_labels=True, node_color='lightgreen', edge_color='gray')
-plt.show()
+
+st.pyplot(plt.show())
