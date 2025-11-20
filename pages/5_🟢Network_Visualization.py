@@ -13,9 +13,9 @@ st.title("Graph Vizualization Example")
 st.markdown(
         """
         **This is a Graph Vizualization Example**
-        ---
         """
         )
+st.markdown("---")
 
 
 
@@ -52,5 +52,7 @@ conn = nx.degree_centrality(g)
 st.markdown('---')
 deg = ''
 for node, score in conn.items():
-    st.write(f'Person: {node}: Score: {score}')
+    st.write(f'Person: {node}: Degree Score: {score}')
+st.markdown('The people with the highest degree centrality are:  
+            Bob, Charlie, Diana, Eve')
 
