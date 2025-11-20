@@ -100,22 +100,10 @@ for c_index, comm in enumerate(communites):
 # Build list of colors for drawing
 community_colors = [palette[node_to_comm[n]] for n in g.nodes()]
 
-# Draw graph again with community colors
-plt.figure(figsize=(8,6))
-nx.draw(
-    g, pos, with_labels=True, node_size=3000,
-    node_color=community_colors, edge_color="gray",
-    font_size=10, font_weight="bold", arrows=True
-)
-weights = nx.get_edge_attributes(g, 'weight')
-nx.draw_networkx_edge_labels(g, pos, edge_labels=weights)
-plt.title("Phishing Network Colored by Community")
-st.pyplot(plt.show())
 
-colors = ['red' if 'malicious' in node else 'green' for node in g.nodes()]
-nx.draw(
-    g, pos, with_labels=True, node_size=3000, node_color=colors,
-    edge_color='gray', font_size=10, font_weight='bold'
-)
-plt.title("Phishing Network with Malicious Node Highlighting")
-st.pyplot(plt.show())
+eigenvector_centrality = nx.eigenvector_centrality(g, max_iter=1000)
+st.markdown("Eigenvector Centrality:")
+for node, score in eigenvector_centrality.items():
+    st.markdown(f"{node}: {score}")
+
+
