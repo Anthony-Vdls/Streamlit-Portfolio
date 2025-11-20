@@ -112,9 +112,16 @@ nx.draw_networkx_edge_labels(g, pos, edge_labels=weights)
 plt.title("Phishing Network Colored by Community")
 st.pyplot(plt.show())
 
+person = ''
+value = 0
+
 eigenvector_centrality = nx.eigenvector_centrality(g, max_iter=1000)
 st.markdown("Eigenvector Centrality:")
 for node, score in eigenvector_centrality.items():
     st.markdown(f"{node}: {score}")
-
+    if score > value:
+        value = score
+        person = node
+st.markdown('The person that has the most infulance on others is:')
+st.write(person)
 
