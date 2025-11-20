@@ -10,6 +10,13 @@ st.set_page_config(
 )
 
 st.title("Graph Vizualization Example")
+st.markdown(
+        """
+        **This is a Graph Vizualization Example**
+        ---
+        """
+        )
+
 
 
 # Data ##################################################
@@ -39,3 +46,11 @@ pos = nx.spring_layout(g)  # Force-directed layout
 nx.draw(g, pos, with_labels=True, node_color='lightgreen', edge_color='gray')
 
 st.pyplot(plt.show())
+
+# ID who is the most connected ##############################
+conn = nx.degree_centrality(g)
+st.markdown('---')
+deg = ''
+for node, score in conn.items():
+    st.write(f'Person: {node}: Score: {score}')
+
