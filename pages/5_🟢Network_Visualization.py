@@ -111,3 +111,11 @@ weights = nx.get_edge_attributes(g, 'weight')
 nx.draw_networkx_edge_labels(g, pos, edge_labels=weights)
 plt.title("Phishing Network Colored by Community")
 st.pyplot(plt.show())
+
+colors = ['red' if 'malicious' in node else 'green' for node in g.nodes()]
+nx.draw(
+    g, pos, with_labels=True, node_size=3000, node_color=colors,
+    edge_color='gray', font_size=10, font_weight='bold'
+)
+plt.title("Phishing Network with Malicious Node Highlighting")
+st.pyplot(plt.show())
