@@ -109,7 +109,7 @@ nx.draw(
 )
 weights = nx.get_edge_attributes(g, 'weight')
 nx.draw_networkx_edge_labels(g, pos, edge_labels=weights)
-plt.title("Phishing Network Colored by Community")
+plt.title("Friend Communities w/no weights")
 st.pyplot(plt.show())
 
 person = ''
