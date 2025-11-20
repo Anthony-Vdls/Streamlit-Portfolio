@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import streamlit as st
+from networkx.algorithms.community import greedy_modularity_communities
 
 # Page Config ###########################################
 st.set_page_config(
@@ -61,9 +62,30 @@ st.write('Bob, Charlie, Diana, Eve')
 st.markdown('---')
 between= nx.betweenness_centrality(g, weight='weight')
 for node, score in between.items():
-    st.write(f'Person: {node}: Degree Score: {score}')
+    st.write(f'Person: {node}: Betweenness Score: {score}')
     if score > value:
         value = score
         person = node
 st.markdown('The person that is the most connected with others is:')
 st.write(person)
+
+# Closeness Centrality ######################################
+st.markdown('---')
+person = ''
+value = 0
+close = nx.closeness_centrality(g)
+for node, score in close.items():
+    st.write(f'Person: {node}: Clooseness to others: {score}')
+    if score > value:
+        value = score
+        person = node
+st.markdown('The person that is the most close to others is:')
+st.write(person)
+
+# Community Detection ########################################
+st.markdown('---')
+communites = greedy_modularity_communities(g)
+for i, community in enumerate(communites, 1):
+    st.write(f'Community {i}: {list(community)}')
+st.markdown('These are the communities of this friend gorup graph:')
+
