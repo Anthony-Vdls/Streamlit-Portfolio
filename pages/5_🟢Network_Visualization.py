@@ -65,3 +65,5 @@ for node, score in between.items():
     if score > value:
         value = score
         person = node
+st.markdown('The person that is the most connected with others is:')
+st.write(person)
