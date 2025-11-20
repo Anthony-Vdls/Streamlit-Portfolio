@@ -89,3 +89,25 @@ for i, community in enumerate(communites, 1):
     st.write(f'Community {i}: {list(community)}')
 st.markdown('These are the communities of this friend gorup graph:')
 
+# Assign a unique color to each community
+palette = ["tab:blue", "tab:orange", "tab:green", "tab:red", "tab:purple"]
+node_to_comm = {}
+
+for c_index, comm in enumerate(communites):
+    for node in comm:
+        node_to_comm[node] = c_index
+
+# Build list of colors for drawing
+community_colors = [palette[node_to_comm[n]] for n in g.nodes()]
+
+# Draw graph again with community colors
+plt.figure(figsize=(8,6))
+nx.draw(
+    g, pos, with_labels=True, node_size=3000,
+    node_color=community_colors, edge_color="gray",
+    font_size=10, font_weight="bold", arrows=True
+)
+weights = nx.get_edge_attributes(g, 'weight')
+nx.draw_networkx_edge_labels(g, pos, edge_labels=weights)
+plt.title("Phishing Network Colored by Community")
+st.pyplot(plt.show())
