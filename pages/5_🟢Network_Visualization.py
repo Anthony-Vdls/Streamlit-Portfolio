@@ -47,12 +47,21 @@ nx.draw(g, pos, with_labels=True, node_color='lightgreen', edge_color='gray')
 
 st.pyplot(plt.show())
 
+person = ''
+value = 0
 # ID who is the most connected ##############################
-conn = nx.degree_centrality(g)
 st.markdown('---')
-deg = ''
+conn = nx.degree_centrality(g)
 for node, score in conn.items():
     st.write(f'Person: {node}: Degree Score: {score}')
-st.markdown('The people with the highest degree centrality are:  
-            Bob, Charlie, Diana, Eve')
+st.markdown('The people with the highest degree centrality are:')
+st.write('Bob, Charlie, Diana, Eve')
 
+# Betweenness Centrality #####################################
+st.markdown('---')
+between= nx.betweenness_centrality(g, weight='weight')
+for node, score in between.items():
+    st.write(f'Person: {node}: Degree Score: {score}')
+    if score > value:
+        value = score
+        person = node
